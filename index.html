@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
     <link rel="stylesheet" href="/css/style.css">
     <title>Gaming Form</title>
 </head>
@@ -23,6 +24,7 @@
             <img src="/images/logo.svg" alt="logo">
             <h6>Gamers</h6>
             </div>
+            <div class="description-content">
             <p>I always observe the people who pass by when I <br>
                 ride an escalator. I'll never see most of them <br> 
                 again, so I imagine a lot of things about their <br>
@@ -32,9 +34,64 @@
                 <br>
                 Hideo Kojima
             </p>
+            </div>
         </div>
         <div class="form-data">
+            <h6>Back</h6>
             <h3>Register Individual Account!</h3>
+            <p>For the purpose of gamers regulation, your details are required.</p> 
+
+            <form action="Register user" method="post">
+                <div class="e-mail">
+                    <label for="e-mail">E-mail adreess*</label>
+                    <input type="email">
+                </div>
+                <div class="password">
+                    <label for="password">Create password*</label>
+                    <input type="password">
+                </div>
+                <div class="re-password">
+                    <label for="password">Repeat password*</label>
+                    <input type="password">
+                </div>
+
+                <label class="container-ch">I agree terms & conditions
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+
+                <button type="submit">Register Account</button>
+                
+                <div class="border"></div>
+                <h6>Or</h6>
+                <div class="border"></div>
+
+                <div id="my-signin2"></div>
+                <script>
+                    function onSuccess(googleUser) {
+                    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+                    }
+                    function onFailure(error) {
+                    console.log(error);
+                    }
+                    function renderButton() {
+                    gapi.signin2.render('my-signin2', {
+                        'scope': 'profile email',
+                        'width': 240,
+                        'height': 50,
+                        'longtitle': true,
+                        'theme': 'dark',
+                        'onsuccess': onSuccess,
+                        'onfailure': onFailure
+                    });
+                    }
+                </script>
+
+                <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+
+
+            </form>
         </div>
     </div>
 </body>
